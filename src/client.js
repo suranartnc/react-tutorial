@@ -7,7 +7,8 @@ import ReactDOM from 'react-dom'
 	</div> 
 */
 const App = function() {
-	return React.createElement('div', null, 'React Tutorial');
+	// return React.createElement('div', null, 'React Tutorial');
+	return <div>React Tutorial</div>;
 }
 
 ReactDOM.render(<App />, document.getElementById('app'))
