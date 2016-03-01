@@ -1,15 +1,14 @@
 import React from 'react';
 
-import mockData from '../utils/mockData'
+import mockData from '../utils/mockData';
+import Article from './Article';
 
 export default function() {
 	return (
 		<div>
 			{ mockData.map(function(data, index) {
 				return (
-					<article key={ data.id }>
-						{ data.title }
-					</article>
+					<Article key={ data.id } article={ data } />
 				);
 			}) }
 		</div>
