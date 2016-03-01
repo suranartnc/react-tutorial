@@ -28,10 +28,14 @@ export default class Main extends Component {
 		    });
 	}
 
+	getSearchResults(keyword) {
+		console.log(keyword);
+	}
+
 	render() {
 		return (
 			<div className="col-md-8">
-				<Search />
+				<Search getSearchResults={this.getSearchResults} />
 				<ArticleList articles={ this.state.articles } />
 			</div>
 		);
