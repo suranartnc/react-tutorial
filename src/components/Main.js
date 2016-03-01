@@ -7,7 +7,7 @@ export default function() {
 		<div>
 			{ mockData.map(function(data, index) {
 				return (
-					<article>
+					<article key={ data.id }>
 						{ data.title }
 					</article>
 				);
