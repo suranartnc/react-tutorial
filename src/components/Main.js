@@ -10,13 +10,17 @@ export default class Main extends Component {
 	
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			articles: []
 		}
 
 		this.getSearchResults = this.getSearchResults.bind(this);
 
+		this.getLatestArticles();
+	}
+
+	getLatestArticles() {
 		fetch('http://localhost:3004/articles')
 		    .then(function(response) {
 		        if (response.status >= 400) {
