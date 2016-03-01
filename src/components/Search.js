@@ -5,6 +5,7 @@ export default class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	handleFormSubmit(event) {
@@ -13,10 +14,14 @@ export default class Search extends Component {
 		this.refs.keyword.value = '';
 	}
 
+	handleInputChange() {
+		this.props.getSearchResults(this.refs.keyword.value);
+	}
+
 	render() {
 		return (
 			<form onSubmit={this.handleFormSubmit}>
-				<input ref="keyword" type="text" placeholder="Search" />
+				<input onChange={this.handleInputChange} ref="keyword" type="text" placeholder="Search" />
 				<button>Submit</button>
 			</form>
 		);
