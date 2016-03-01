@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function(props) {
-	return (
-		<form>
-			<input type="text" placeholder="Search" />
-			<button>Submit</button>
-		</form>
-	);
+export default class Search extends Component {
+	
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<form>
+				<input type="text" placeholder="Search" />
+				<button>Submit</button>
+			</form>
+		);
+	}
 }
