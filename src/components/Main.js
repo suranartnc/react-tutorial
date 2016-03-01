@@ -10,6 +10,12 @@ export default class Main extends Component {
 		this.state = {
 			articles: mockData
 		}
+
+		setTimeout(() => {
+			this.setState({
+				articles: []
+			});
+		}, 2000);
 	}
 
 	render() {
