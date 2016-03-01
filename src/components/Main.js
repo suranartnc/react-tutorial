@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+import Search from './Search';
 import ArticleList from './ArticleList';
 
 export default class Main extends Component {
@@ -30,6 +31,7 @@ export default class Main extends Component {
 	render() {
 		return (
 			<div className="col-md-8">
+				<Search />
 				<ArticleList articles={ this.state.articles } />
 			</div>
 		);
