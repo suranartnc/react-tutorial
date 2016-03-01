@@ -7,9 +7,9 @@ import Footer from './Footer';
 
 export default function() {
 	return (
-		<div>
+		<div className="container">
 			<Header />
-			<div>
+			<div className="row">
 				<Main />
 				<Sidebar />
 			</div>
