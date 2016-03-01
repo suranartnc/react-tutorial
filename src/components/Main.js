@@ -10,9 +10,12 @@ export default class Main extends Component {
 	
 	constructor(props) {
 		super(props);
+		
 		this.state = {
 			articles: []
 		}
+
+		this.getSearchResults = this.getSearchResults.bind(this);
 
 		fetch('http://localhost:3004/articles')
 		    .then(function(response) {
@@ -29,7 +32,18 @@ export default class Main extends Component {
 	}
 
 	getSearchResults(keyword) {
-		console.log(keyword);
+		fetch(`http://localhost:3004/articles?q=${keyword}`)
+		    .then(function(response) {
+		        if (response.status >= 400) {
+		            throw new Error("Bad response from server");
+		        }
+		        return response.json();
+		    })
+		    .then((data) => {
+		        this.setState({
+		        	articles: data
+		        });
+		    });
 	}
 
 	render() {
