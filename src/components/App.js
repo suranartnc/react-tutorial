@@ -1,11 +1,9 @@
 import React from 'react';
 
-const App = function() {
+export default function() {
 	return (
 		<div>
 			React Tutorial
 		</div>
 	);
 }
-
-export default App;
