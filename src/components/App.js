@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header';
-import Main from './Main';
-import Sidebar from './Sidebar';
+import Nav from './Nav';
 import Footer from './Footer';
 
 export default class App extends Component {
@@ -15,9 +14,9 @@ export default class App extends Component {
 		return (
 			<div className="container">
 				<Header />
+				<Nav />
 				<div className="row">
-					<Main />
-					<Sidebar />
+					{ this.props.children }
 				</div>
 				<Footer />
 			</div>

@@ -6,7 +6,7 @@ require('isomorphic-fetch');
 import Search from './Search';
 import ArticleList from './ArticleList';
 
-export default class Main extends Component {
+export default class Home extends Component {
 	
 	constructor(props) {
 		super(props);
@@ -16,8 +16,14 @@ export default class Main extends Component {
 		}
 
 		this.getSearchResults = this.getSearchResults.bind(this);
+	}
 
+	componentDidMount() {
 		this.getLatestArticles();
+	}
+
+	componentWillUnmount() {
+		this.ignoreLastFetch = true;
 	}
 
 	getLatestArticles() {
@@ -29,9 +35,11 @@ export default class Main extends Component {
 		        return response.json();
 		    })
 		    .then((data) => {
-		        this.setState({
-		        	articles: data
-		        });
+		        if (!this.ignoreLastFetch) {
+	 				this.setState({
+			        	articles: data
+			        });
+		        }
 		    });
 	}
 
@@ -44,17 +52,24 @@ export default class Main extends Component {
 		        return response.json();
 		    })
 		    .then((data) => {
-		        this.setState({
-		        	articles: data
-		        });
+		        if (!this.ignoreLastFetch) {
+	 				this.setState({
+			        	articles: data
+			        });
+		        }
 		    });
 	}
 
 	render() {
 		return (
-			<div className="col-md-8">
-				<Search getSearchResults={this.getSearchResults} />
-				<ArticleList articles={ this.state.articles } />
+			<div>
+				<div className="col-md-8">
+					<Search getSearchResults={this.getSearchResults} />
+					<ArticleList articles={ this.state.articles } />
+				</div>
+				<div className="col-md-4">
+					Sidebar
+				</div>
 			</div>
 		);
 	}
