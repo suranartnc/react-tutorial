@@ -1,6 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/App';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+import App from './components/App';
+import Main from './components/Main';
+import About from './components/About';
+
+ReactDOM.render(
+	<Router history={browserHistory}>
+		<Route path="/" component={App}>
+			<IndexRoute component={Main} />
+			<Route path="/about" component={About} />
+		</Route>
+	</Router>
+	, document.getElementById('app'));

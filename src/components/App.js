@@ -18,7 +18,7 @@ export default class App extends Component {
 				<Header />
 				<Nav />
 				<div className="row">
-					<Main />
+					{ this.props.children }
 					<Sidebar />
 				</div>
 				<Footer />
