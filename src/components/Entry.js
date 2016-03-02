@@ -3,18 +3,22 @@ import React, { Component } from 'react';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+import ArticleList from './ArticleList';
+
 export default class Entry extends Component {
 	
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			article: {}
+			article: {},
+			articleLatest: []
 		}
 	}
 
 	componentDidMount() {
 		this.getArticleById(this.props.params.id);
+		this.getLatestArticles();
 	}
 
 	getArticleById(id) {
@@ -32,6 +36,21 @@ export default class Entry extends Component {
 		    });
 	}
 
+	getLatestArticles() {
+		fetch('http://localhost:3004/articles')
+		    .then(function(response) {
+		        if (response.status >= 400) {
+		            throw new Error("Bad response from server");
+		        }
+		        return response.json();
+		    })
+		    .then((data) => {
+		        this.setState({
+		        	articleLatest: data
+		        });
+		    });
+	}
+
 	render() {
 		return (
 			<div>
@@ -42,7 +61,7 @@ export default class Entry extends Component {
 					</article>
 				</div>
 				<div className="col-md-4">
-					Sidebar
+					<ArticleList articles={this.state.articleLatest} />
 				</div>
 			</div>
 		);
