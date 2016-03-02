@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import Header from './Header';
 import Nav from './Nav';
-import Main from './Main';
-import Sidebar from './Sidebar';
 import Footer from './Footer';
 
 export default class App extends Component {
@@ -19,7 +17,6 @@ export default class App extends Component {
 				<Nav />
 				<div className="row">
 					{ this.props.children }
-					<Sidebar />
 				</div>
 				<Footer />
 			</div>

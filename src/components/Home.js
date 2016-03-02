@@ -6,7 +6,7 @@ require('isomorphic-fetch');
 import Search from './Search';
 import ArticleList from './ArticleList';
 
-export default class Main extends Component {
+export default class Home extends Component {
 	
 	constructor(props) {
 		super(props);
@@ -52,9 +52,14 @@ export default class Main extends Component {
 
 	render() {
 		return (
-			<div className="col-md-8">
-				<Search getSearchResults={this.getSearchResults} />
-				<ArticleList articles={ this.state.articles } />
+			<div>
+				<div className="col-md-8">
+					<Search getSearchResults={this.getSearchResults} />
+					<ArticleList articles={ this.state.articles } />
+				</div>
+				<div className="col-md-4">
+					Sidebar
+				</div>
 			</div>
 		);
 	}
