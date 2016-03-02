@@ -28,6 +28,10 @@ export default class Entry extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		this.ignoreLastFetch = true;
+	}
+
 	getArticleById(id) {
 		fetch(`http://localhost:3004/articles/${id}`)
 		    .then(function(response) {
@@ -37,9 +41,11 @@ export default class Entry extends Component {
 		        return response.json();
 		    })
 		    .then((data) => {
-		        this.setState({
-		        	article: data
-		        });
+		        if (!this.ignoreLastFetch) {
+			        this.setState({
+			        	article: data
+			        });
+		        }
 		    });
 	}
 
@@ -52,9 +58,11 @@ export default class Entry extends Component {
 		        return response.json();
 		    })
 		    .then((data) => {
-		        this.setState({
-		        	articleLatest: data
-		        });
+		        if (!this.ignoreLastFetch) {
+	 				this.setState({
+			        	articleLatest: data
+			        });
+		        }
 		    });
 	}
 

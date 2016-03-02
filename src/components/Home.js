@@ -22,6 +22,10 @@ export default class Home extends Component {
 		this.getLatestArticles();
 	}
 
+	componentWillUnmount() {
+		this.ignoreLastFetch = true;
+	}
+
 	getLatestArticles() {
 		fetch('http://localhost:3004/articles')
 		    .then(function(response) {
@@ -31,9 +35,11 @@ export default class Home extends Component {
 		        return response.json();
 		    })
 		    .then((data) => {
-		        this.setState({
-		        	articles: data
-		        });
+		        if (!this.ignoreLastFetch) {
+	 				this.setState({
+			        	articles: data
+			        });
+		        }
 		    });
 	}
 
@@ -46,9 +52,11 @@ export default class Home extends Component {
 		        return response.json();
 		    })
 		    .then((data) => {
-		        this.setState({
-		        	articles: data
-		        });
+		        if (!this.ignoreLastFetch) {
+	 				this.setState({
+			        	articles: data
+			        });
+		        }
 		    });
 	}
 
