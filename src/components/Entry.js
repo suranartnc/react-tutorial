@@ -11,7 +11,9 @@ export default class Entry extends Component {
 		this.state = {
 			article: {}
 		}
+	}
 
+	componentDidMount() {
 		this.getArticleById(this.props.params.id);
 	}
 

@@ -16,7 +16,9 @@ export default class Home extends Component {
 		}
 
 		this.getSearchResults = this.getSearchResults.bind(this);
+	}
 
+	componentDidMount() {
 		this.getLatestArticles();
 	}
 
