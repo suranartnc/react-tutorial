@@ -22,8 +22,10 @@ export default class Entry extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.getArticleById(nextProps.params.id);
-		this.getLatestArticles();
+		if (nextProps.params.id !== this.props.params.id) {
+			this.getArticleById(nextProps.params.id);
+			this.getLatestArticles();
+		}
 	}
 
 	getArticleById(id) {
