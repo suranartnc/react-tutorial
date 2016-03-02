@@ -21,6 +21,11 @@ export default class Entry extends Component {
 		this.getLatestArticles();
 	}
 
+	componentWillReceiveProps(nextProps) {
+		this.getArticleById(nextProps.params.id);
+		this.getLatestArticles();
+	}
+
 	getArticleById(id) {
 		fetch(`http://localhost:3004/articles/${id}`)
 		    .then(function(response) {
